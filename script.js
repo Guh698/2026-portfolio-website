@@ -152,9 +152,16 @@ function initHomeCarousel() {
   function updateMetrics() {
     if (!cards[0]) return;
 
-    cards.forEach((card) => (card.style.height = ""));
+    cards.forEach((card) => {
+      card.style.height = "";
+      card.style.willChange = "transform";
+    });
+
     const rawHeight = cards[0].clientHeight;
     cards.forEach((card) => (card.style.height = `${rawHeight}px`));
+
+    const minHeightNeeded = window.innerHeight * 1.2;
+    const rawTotalHeight = rawHeight * cards.length;
 
     cardHeight = rawHeight + spacer;
     totalHeight = cardHeight * cards.length;

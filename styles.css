@@ -7,7 +7,7 @@
 
 :root {
   --light-color: #f1ddcf;
-  --light-alternative-color: #f9f7e0ff;
+  --light-alternative-color: #fdfbf7;
   --dark-color: #000;
 }
 
@@ -75,6 +75,7 @@ header a {
 
 header span {
   text-transform: uppercase;
+  cursor: default;
 }
 
 main {
@@ -124,22 +125,22 @@ main {
 }
 
 .work1 {
-  transform: rotateY(47deg);
+  transform: rotateY(45deg);
   z-index: 4;
 }
 
 .work2 {
-  transform: rotateY(-47deg);
+  transform: rotateY(-45deg);
   z-index: 3;
 }
 
 .work3 {
-  transform: rotateY(47deg);
+  transform: rotateY(45deg);
   z-index: 2;
 }
 
 .work4 {
-  transform: rotateY(-47deg);
+  transform: rotateY(-45deg);
   z-index: 1;
 }
 
@@ -211,7 +212,7 @@ footer a {
 
 .work-images-grid {
   position: relative;
-  gap: 9rem;
+  gap: 7rem;
   padding: 9rem;
   background-color: var(--light-color);
   z-index: 10;
@@ -221,6 +222,7 @@ footer a {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 3rem;
   width: 80%;
   background-color: var(--light-alternative-color);
   height: 90vh;
@@ -231,6 +233,11 @@ footer a {
   height: 60%;
   object-fit: cover;
   object-position: center;
+}
+
+img.work-mobile-image {
+  width: 20% !important;
+  height: 60%;
 }
 
 .top-scroll-btn {
@@ -348,6 +355,10 @@ footer a {
   .work-image img {
     width: 90%;
     height: 70%;
+  }
+
+  img.work-mobile-image {
+    width: 23% !important;
   }
 
   .about-hero {
