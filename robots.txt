@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://guoliveira.netlify.app/sitemap.xml
