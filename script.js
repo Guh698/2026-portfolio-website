@@ -1,8 +1,55 @@
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin, Observer);
 
 let smoother;
 let homeObserver;
 let homeTickerFunc;
+
+const workNamespaces = [
+  "Studio JEMD",
+  "Éminence",
+  "Nocturna",
+  "Woode",
+  "Luiz Gustavo",
+];
+
+const workViews = workNamespaces.map((pageName) => ({
+  namespace: pageName,
+  beforeEnter() {
+    document.body.classList.remove("is-home");
+    document.body.classList.add("is-work");
+    document.body.style.overflow = "auto";
+    document.body.style.height = "auto";
+    document.body.style.touchAction = "auto";
+    gsap.set(".about-page-link", { opacity: 0 });
+  },
+  afterEnter() {
+    if (pageName === "Luiz Gustavo") {
+      aboutPageOpening();
+    } else {
+      workPagesOpening();
+    }
+    scrollTop();
+  },
+  afterLeave() {
+    gsap.set(".about-page-link", { opacity: 1 });
+  },
+}));
+
+function initSmoothScroll(contentElement = "#smooth-content") {
+  if (ScrollSmoother.get()) ScrollSmoother.get().kill();
+
+  smoother = ScrollSmoother.create({
+    wrapper: "#smooth-wrapper",
+    content: contentElement,
+    smooth: 1,
+    effects: true,
+    smoothTouch: 0.1,
+  });
+}
 
 function mainOpening() {
   let openingTimeline = gsap.timeline();
@@ -22,14 +69,12 @@ function mainOpening() {
 
   openingTimeline.fromTo(
     ["header span, header a, footer a, .about-page-link"],
-    {
-      opacity: 0,
-      filter: "blur(3px)",
-    },
+    { opacity: 0, filter: "blur(3px)" },
     {
       opacity: 1,
       filter: "blur(0px)",
       duration: 1.7,
+      clearProps: "opacity,filter",
     },
     "-=0.3",
   );
@@ -89,18 +134,6 @@ function aboutPageOpening() {
       duration: 1.7,
     },
   );
-}
-
-function initSmoothScroll() {
-  if (ScrollSmoother.get()) ScrollSmoother.get().kill();
-
-  smoother = ScrollSmoother.create({
-    wrapper: "#smooth-wrapper",
-    content: "#smooth-content",
-    smooth: 1,
-    effects: true,
-    smoothTouch: 0.1,
-  });
 }
 
 function initHomeCarousel() {
@@ -256,10 +289,28 @@ function scrollTop() {
   }
 }
 
+const mm = gsap.matchMedia();
+
+mm.add("(min-width: 1025px)", () => {
+  gsap.set(".transition-page", {
+    xPercent: 50,
+    yPercent: 50,
+    scale: 0.3,
+    rotate: -45,
+    opacity: 1,
+  });
+});
+mm.add("(max-width: 1024px)", () => {
+  gsap.set(".transition-page", {
+    yPercent: 50,
+    scale: 1,
+    rotate: 0,
+    opacity: 1,
+  });
+});
+
 barba.init({
   sync: true,
-  debug: true,
-
   views: [
     {
       namespace: "home",
@@ -275,76 +326,7 @@ barba.init({
         killHomeCarousel();
       },
     },
-    {
-      namespace: "Studio JEMD",
-      beforeEnter() {
-        document.body.classList.remove("is-home");
-        document.body.classList.add("is-work");
-        document.body.style.overflow = "auto";
-        document.body.style.height = "auto";
-        document.body.style.touchAction = "auto";
-      },
-      afterEnter() {
-        workPagesOpening();
-        scrollTop();
-      },
-    },
-    {
-      namespace: "Éminence",
-      beforeEnter() {
-        document.body.classList.remove("is-home");
-        document.body.classList.add("is-work");
-        document.body.style.overflow = "auto";
-        document.body.style.height = "auto";
-        document.body.style.touchAction = "auto";
-      },
-      afterEnter() {
-        workPagesOpening();
-        scrollTop();
-      },
-    },
-    {
-      namespace: "Nocturna",
-      beforeEnter() {
-        document.body.classList.remove("is-home");
-        document.body.classList.add("is-work");
-        document.body.style.overflow = "auto";
-        document.body.style.height = "auto";
-        document.body.style.touchAction = "auto";
-      },
-      afterEnter() {
-        workPagesOpening();
-        scrollTop();
-      },
-    },
-    {
-      namespace: "Woode",
-      beforeEnter() {
-        document.body.classList.remove("is-home");
-        document.body.classList.add("is-work");
-        document.body.style.overflow = "auto";
-        document.body.style.height = "auto";
-        document.body.style.touchAction = "auto";
-      },
-      afterEnter() {
-        workPagesOpening();
-        scrollTop();
-      },
-    },
-    {
-      namespace: "Luiz Gustavo",
-      beforeEnter() {
-        document.body.classList.remove("is-home");
-        document.body.classList.add("is-work");
-        document.body.style.overflow = "auto";
-        document.body.style.height = "auto";
-        document.body.style.touchAction = "auto";
-      },
-      afterEnter() {
-        aboutPageOpening();
-        scrollTop();
-      },
-    },
+    ...workViews,
   ],
 
   transitions: [
@@ -356,51 +338,87 @@ barba.init({
           initHomeCarousel();
           mainOpening();
         } else {
-          initSmoothScroll();
+          initSmoothScroll(data.next.container);
         }
         gsap.from(data.next.container, { opacity: 0, duration: 1 });
       },
 
       leave(data) {
         const done = this.async();
+        const tl = gsap.timeline();
+        const mm = gsap.matchMedia();
+        if (smoother) smoother.paused(true);
 
-        if (smoother) {
-          smoother.kill();
-          smoother = null;
-        }
+        mm.add("(min-width: 1025px)", () => {
+          tl.fromTo(
+            ".transition-page",
+            { xPercent: 50, yPercent: 50, scale: 0.3, rotate: -45 },
+            { xPercent: -50, yPercent: -50, duration: 1, scale: 1.3 },
+          );
 
-        gsap.to(data.current.container, {
-          opacity: 0,
-          duration: 0.5,
-          onComplete: done,
+          tl.add(() => {
+            if (smoother) {
+              smoother.kill();
+              smoother = null;
+            }
+          });
+
+          tl.to(".transition-overlay", { opacity: 1, duration: 0.5 }, 0.3);
+
+          tl.add(() => {
+            done();
+          });
+
+          tl.to(".transition-page", {
+            xPercent: -150,
+            yPercent: -150,
+            duration: 1,
+            scale: 1.7,
+            rotate: -75,
+          });
+
+          tl.to(".transition-overlay", { opacity: 0, duration: 0.8 }, "<");
+        });
+        mm.add("(max-width: 1024px)", () => {
+          tl.fromTo(
+            ".transition-page",
+            { yPercent: 50 },
+            { yPercent: -50, duration: 1.7, ease: "power2.inOut" },
+          );
+
+          tl.add(() => {
+            if (smoother) {
+              smoother.kill();
+              smoother = null;
+            }
+          });
+
+          tl.to(".transition-overlay", { opacity: 1, duration: 0.5 }, 0.3);
+
+          tl.add(() => {
+            done();
+          });
+
+          tl.to(".transition-page", {
+            yPercent: -150,
+            duration: 0.7,
+            ease: "power2.inOut",
+          });
+
+          tl.to(".transition-overlay", { opacity: 0, duration: 0.8 }, "<");
         });
       },
 
       enter(data) {
         const wrapper = document.querySelector("#smooth-wrapper");
         if (wrapper) wrapper.style.cssText = "";
-
         window.scrollTo(0, 0);
 
-        setTimeout(() => {
-          if (data.next.namespace !== "home") {
-            initSmoothScroll();
-            ScrollTrigger.refresh();
-          }
-        }, 10);
+        if (data.next.namespace !== "home") {
+          initSmoothScroll(data.next.container);
+        }
 
-        gsap.fromTo(
-          data.next.container,
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 0.8,
-            clearProps: "all",
-            onComplete: () => {
-              ScrollTrigger.refresh();
-            },
-          },
-        );
+        ScrollTrigger.refresh();
       },
     },
   ],

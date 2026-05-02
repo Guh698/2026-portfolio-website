@@ -3,6 +3,7 @@
   padding: 0;
   text-decoration: none;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -14,6 +15,11 @@
   --fs-ui: clamp(1.2rem, 1.2vw, 1.2rem);
   --fs-heading: clamp(7rem, 9vw, 12rem);
   --fs-display: clamp(8rem, 22vw, 35rem);
+}
+
+::selection {
+  background-color: var(--dark-color);
+  color: var(--light-color);
 }
 
 html {
@@ -62,6 +68,31 @@ a {
   color: var(--dark-color);
 }
 
+.transition-page {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100vh;
+  background-color: var(--dark-color);
+  z-index: 10000;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  opacity: 0;
+}
+
+.transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: var(--light-color);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -73,6 +104,11 @@ header {
   pointer-events: none;
 }
 
+header,
+footer {
+  mix-blend-mode: difference;
+}
+
 header a {
   font-family: "Bodoni Moda", serif;
   font-size: var(--fs-header-logo);
@@ -80,10 +116,22 @@ header a {
   pointer-events: auto;
 }
 
-header span {
+header a,
+footer a,
+.about-page-link {
+  color: var(--light-color);
+  position: relative;
+}
+
+.about-page-link {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 2rem;
+  z-index: 10;
   text-transform: uppercase;
   font-size: var(--fs-ui);
-  cursor: default;
+  mix-blend-mode: difference;
 }
 
 main {
@@ -114,7 +162,7 @@ main {
   -webkit-backface-visibility: hidden;
   cursor: pointer;
   overflow: hidden;
-  background-color: #000;
+  background-color: var(--dark-color);
   transform: translate3d(0, 0, 0);
   clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
 }
@@ -150,15 +198,6 @@ main {
 .work4 {
   transform: rotateY(-45deg);
   z-index: 1;
-}
-
-.about-page-link {
-  position: absolute;
-  top: 50%;
-  left: 2rem;
-  z-index: 10;
-  text-transform: uppercase;
-  font-size: var(--fs-ui);
 }
 
 footer {
@@ -255,9 +294,14 @@ img.work-mobile-image {
   left: 50%;
   transform: translateX(-50%);
   bottom: 1.3rem;
-  font-size: var(--fs-ui);
   text-transform: uppercase;
+  font-size: var(--fs-ui);
+  font-weight: 600;
   cursor: pointer;
+  border: none;
+  color: var(--dark-color);
+  background-color: var(--light-color);
+  letter-spacing: 0.13em;
 }
 
 .about-hero {
@@ -324,6 +368,12 @@ img.work-mobile-image {
 }
 
 @media (max-width: 1024px) {
+  .transition-page {
+    height: 100dvh;
+    width: 100%;
+    clip-path: none;
+  }
+
   .works-wrapper {
     width: 90%;
   }
@@ -331,10 +381,6 @@ img.work-mobile-image {
   .work {
     width: 100%;
     height: 27vh;
-  }
-
-  header span {
-    display: none;
   }
 
   .work-hero {
@@ -366,8 +412,8 @@ img.work-mobile-image {
     height: 70%;
   }
 
-  img.work-mobile-image {
-    width: 23% !important;
+  .work-mobile-image {
+    width: 23%;
   }
 
   .about-hero {
@@ -396,13 +442,14 @@ img.work-mobile-image {
       "text1"
       "text2"
       "text3";
-    min-height: 170vh;
+    height: 100%;
     gap: 2rem;
-    padding: 7rem 2rem;
+    padding: 0rem 2rem;
   }
 
   .about-text-container p {
-    width: 70%;
+    height: auto;
+    width: 100%;
     align-self: flex-start;
     justify-self: start;
   }
