@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles-min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="shortcut icon" href="imgs/32x32ico.ico" type="image/x-icon" />
@@ -139,31 +139,35 @@
                 loading="lazy"
               />
             </div>
-            <div class="work-image">
-              <img
-                src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159561/nocturna-photo6_xvcw8l.webp"
-                class="work-mobile-image"
-                alt="A condensed mobile command interface. The Nocturna monolith floats at the top as a dark 3D totem, slashed by a neon gradient. Below, a high-contrast white pill button labeled 'Junte-se ao circulo' anchors the screen, acting as a tactile access node to the brand's exclusive ecosystem."
-                loading="lazy"
-              /><img
-                src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159562/nocturna-photo7_vpjgru.webp"
-                class="work-mobile-image"
-                alt="A vertical identity declaration. The headline 'Um perfil. Não um sabor.' reframes the commodity as a persona. The visual hierarchy stacks the packaging like tech components: the box's neon laser line cuts across the upper sector, while the tube rests below with the gravity of a matte-finished device."
-                loading="lazy"
-              />
+            <div class="mobile-work-container">
+              <div class="work-image work-mobile-image-container">
+                <img
+                  src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159561/nocturna-photo6_xvcw8l.webp"
+                  class="work-mobile-image mobile-visually-hidden-img"
+                  alt="A condensed mobile command interface. The Nocturna monolith floats at the top as a dark 3D totem, slashed by a neon gradient. Below, a high-contrast white pill button labeled 'Junte-se ao circulo' anchors the screen, acting as a tactile access node to the brand's exclusive ecosystem."
+                  loading="lazy"
+                /><img
+                  src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159562/nocturna-photo7_vpjgru.webp"
+                  class="work-mobile-image"
+                  alt="A vertical identity declaration. The headline 'Um perfil. Não um sabor.' reframes the commodity as a persona. The visual hierarchy stacks the packaging like tech components: the box's neon laser line cuts across the upper sector, while the tube rests below with the gravity of a matte-finished device."
+                  loading="lazy"
+                />
+              </div>
             </div>
-            <div class="work-image">
-              <img
-                src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159578/nocturna-photo8_v8oxz7.webp"
-                class="work-mobile-image"
-                alt="A condensed structural schematic of the open packaging. The stark white wireframe floats in the center, stripping away texture to reveal the product's architectural geometry in a raw, unrendered state—a digital blueprint optimized for the handheld display."
-                loading="lazy"
-              /><img
-                src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159578/nocturna-photo9_hlpj0c.webp"
-                class="work-mobile-image"
-                alt="The scroll depth reaches its absolute terminus. A condensed midnight-blue bedrock at the base of the mobile display, currently silent and unpopulated, serving as the final grounding anchor for the interface's vertical journey."
-                loading="lazy"
-              />
+            <div class="mobile-work-container">
+              <div class="work-image work-mobile-image-container">
+                <img
+                  src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159578/nocturna-photo8_v8oxz7.webp"
+                  class="work-mobile-image"
+                  alt="A condensed structural schematic of the open packaging. The stark white wireframe floats in the center, stripping away texture to reveal the product's architectural geometry in a raw, unrendered state—a digital blueprint optimized for the handheld display."
+                  loading="lazy"
+                /><img
+                  src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159578/nocturna-photo9_hlpj0c.webp"
+                  class="work-mobile-image mobile-visually-hidden-img"
+                  alt="The scroll depth reaches its absolute terminus. A condensed midnight-blue bedrock at the base of the mobile display, currently silent and unpopulated, serving as the final grounding anchor for the interface's vertical journey."
+                  loading="lazy"
+                />
+              </div>
             </div>
             <button type="button" class="top-scroll-btn">top</button>
           </section>
@@ -207,6 +211,6 @@
       defer
     ></script>
     <script src="https://unpkg.com/@barba/core" defer></script>
-    <script src="script.js" defer></script>
+    <script src="script-min.js" defer></script>
   </body>
 </html>

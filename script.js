@@ -24,7 +24,7 @@ const workViews = workNamespaces.map((pageName) => ({
     document.body.style.overflow = "auto";
     document.body.style.height = "auto";
     document.body.style.touchAction = "auto";
-    gsap.set(".about-page-link", { opacity: 0 });
+    gsap.set(".about-page-link", { opacity: 0, overwrite: true });
   },
   afterEnter() {
     if (pageName === "Luiz Gustavo") {
@@ -68,13 +68,13 @@ function mainOpening() {
   );
 
   openingTimeline.fromTo(
-    ["header span, header a, footer a, .about-page-link"],
+    ["header a, footer a, .about-page-link"],
     { opacity: 0, filter: "blur(3px)" },
     {
       opacity: 1,
       filter: "blur(0px)",
       duration: 1.7,
-      clearProps: "opacity,filter",
+      overwrite: true,
     },
     "-=0.3",
   );
@@ -82,7 +82,7 @@ function mainOpening() {
 
 function workPagesOpening() {
   gsap.fromTo(
-    [".work-hero h1, .work-hero p"],
+    [".work-hero h1, .work-hero p, .work-hero a"],
     {
       opacity: 0,
       filter: "blur(3px)",
@@ -317,6 +317,7 @@ barba.init({
       beforeEnter() {
         document.body.classList.add("is-home");
         document.body.classList.remove("is-work");
+        gsap.set([".work, .about-page-link"], { pointerEvents: "auto" });
       },
       afterEnter() {
         initHomeCarousel();
@@ -324,6 +325,7 @@ barba.init({
       },
       beforeLeave() {
         killHomeCarousel();
+        gsap.set([".work, .about-page-link"], { pointerEvents: "none" });
       },
     },
     ...workViews,
@@ -353,7 +355,13 @@ barba.init({
           tl.fromTo(
             ".transition-page",
             { xPercent: 50, yPercent: 50, scale: 0.3, rotate: -45 },
-            { xPercent: -50, yPercent: -50, duration: 1, scale: 1.3 },
+            {
+              xPercent: -50,
+              yPercent: -50,
+              duration: 1,
+              scale: 1.3,
+              ease: "none",
+            },
           );
 
           tl.add(() => {

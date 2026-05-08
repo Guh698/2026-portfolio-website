@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles-min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="shortcut icon" href="imgs/32x32ico.ico" type="image/x-icon" />
@@ -98,6 +98,7 @@
               premium positioning. A seamless blend of technical performance and
               aesthetic sensitivity. L'élégance dans les moindres détails.
             </p>
+            <a href="https://studiojemd.com/" target="_blank">Live Website</a>
           </section>
           <div class="parallax-work-image" data-speed="0.5">
             <img
@@ -142,31 +143,35 @@
                 loading="lazy"
               />
             </div>
-            <div class="work-image">
-              <img
-                src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159591/studiojemd-photo6_i78kls.webp"
-                class="work-mobile-image"
-                alt="A vertical mobile viewport displaying the minimalist hero section of the Studio JEMD website. The screen is filled with a deep navy blue background, centering the brand identity to maximize impact on a smaller display. 'Studio' is rendered in an elegant, cream-colored italic serif font, sitting alongside 'JEMD' in a bold, uppercase sans-serif typeface."
-                loading="lazy"
-              /><img
-                src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159592/studiojemd-photo7_mukgzi.webp"
-                class="work-mobile-image"
-                alt="A mobile view of the 'Services' section, featuring a vertical stack of cream-colored cards against a dark navy background. The layout suggests a scrolling interaction. The central card is titled 'Atmosphere & Motion' in bold text, marked with 'L'Essence' in an elegant script font in the corner, and lists capabilities like 'INTERFACE DESIGN' and 'DIGITAL ILLUSTRATION.' Above it, the bottom edge of a previous card displays technical tags such as 'BESPOKE FRONT-END' and 'HEADLESS ARCHITECTURE,' while the top of a third card, titled 'Technical Performance,' appears below."
-                loading="lazy"
-              />
+            <div class="mobile-work-container">
+              <div class="work-image work-mobile-image-container">
+                <img
+                  src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159591/studiojemd-photo6_i78kls.webp"
+                  class="work-mobile-image mobile-visually-hidden-img"
+                  alt="A vertical mobile viewport displaying the minimalist hero section of the Studio JEMD website. The screen is filled with a deep navy blue background, centering the brand identity to maximize impact on a smaller display. 'Studio' is rendered in an elegant, cream-colored italic serif font, sitting alongside 'JEMD' in a bold, uppercase sans-serif typeface."
+                  loading="lazy"
+                /><img
+                  src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159592/studiojemd-photo7_mukgzi.webp"
+                  class="work-mobile-image"
+                  alt="A mobile view of the 'Services' section, featuring a vertical stack of cream-colored cards against a dark navy background. The layout suggests a scrolling interaction. The central card is titled 'Atmosphere & Motion' in bold text, marked with 'L'Essence' in an elegant script font in the corner, and lists capabilities like 'INTERFACE DESIGN' and 'DIGITAL ILLUSTRATION.' Above it, the bottom edge of a previous card displays technical tags such as 'BESPOKE FRONT-END' and 'HEADLESS ARCHITECTURE,' while the top of a third card, titled 'Technical Performance,' appears below."
+                  loading="lazy"
+                />
+              </div>
             </div>
-            <div class="work-image">
-              <img
-                src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159594/studiojemd-photo8_hpwbba.webp"
-                class="work-mobile-image"
-                alt="A vertical mobile view of the 'Selected Works' section, displaying a stack of cream-colored project cards against a dark navy background. The central focus is a card for a project named 'Woode,' featuring a sophisticated photograph of modern wooden furniture and indoor greenery, accompanied by a 'See the website' link. Above it, the bottom of a card for a project titled 'Nocturna' (marked 'In progress') is visible. At the very bottom, the top edge of a third card peeks through, revealing a dark, elegant image of a figure in a tuxedo."
-                loading="lazy"
-              /><img
-                src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159595/studiojemd-photo9_qcret9.webp"
-                class="work-mobile-image"
-                alt="A vertical mobile view of the 'About' section, featuring a clean cream-colored background. The studio's acronym 'JEMD' appears at the top in a bold, dark navy sans-serif font. Below, a single column of elegant serif text articulates the brand's philosophy. The copy describes the studio as a 'boutique creative studio based in Brazil,' highlighting key concepts like 'European elegance,' 'digital residence,' and a commitment to 'hand-written code' to guide the user's emotion."
-                loading="lazy"
-              />
+            <div class="mobile-work-container">
+              <div class="work-image work-mobile-image-container">
+                <img
+                  src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159594/studiojemd-photo8_hpwbba.webp"
+                  class="work-mobile-image"
+                  alt="A vertical mobile view of the 'Selected Works' section, displaying a stack of cream-colored project cards against a dark navy background. The central focus is a card for a project named 'Woode,' featuring a sophisticated photograph of modern wooden furniture and indoor greenery, accompanied by a 'See the website' link. Above it, the bottom of a card for a project titled 'Nocturna' (marked 'In progress') is visible. At the very bottom, the top edge of a third card peeks through, revealing a dark, elegant image of a figure in a tuxedo."
+                  loading="lazy"
+                /><img
+                  src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159595/studiojemd-photo9_qcret9.webp"
+                  class="work-mobile-image mobile-visually-hidden-img"
+                  alt="A vertical mobile view of the 'About' section, featuring a clean cream-colored background. The studio's acronym 'JEMD' appears at the top in a bold, dark navy sans-serif font. Below, a single column of elegant serif text articulates the brand's philosophy. The copy describes the studio as a 'boutique creative studio based in Brazil,' highlighting key concepts like 'European elegance,' 'digital residence,' and a commitment to 'hand-written code' to guide the user's emotion."
+                  loading="lazy"
+                />
+              </div>
             </div>
             <button type="button" class="top-scroll-btn">top</button>
           </section>
@@ -210,6 +215,6 @@
       defer
     ></script>
     <script src="https://unpkg.com/@barba/core" defer></script>
-    <script src="script.js" defer></script>
+    <script src="script-min.js" defer></script>
   </body>
 </html>

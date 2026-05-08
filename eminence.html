@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles-min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="shortcut icon" href="imgs/32x32ico.ico" type="image/x-icon" />
@@ -138,31 +138,35 @@
                 loading="lazy"
               />
             </div>
-            <div class="work-image">
-              <img
-                src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159544/eminence-photo6_smdosm.webp"
-                class="work-mobile-image"
-                alt="A distilled vertical composition where the brand name 'Éminence' stands in pristine white serif against a deep black void. A mobile-first expression of typographic purity, centering the identity in a stark, minimalist frame."
-                loading="lazy"
-              /><img
-                src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159546/eminence-photo7_brjdkg.webp"
-                class="work-mobile-image"
-                alt="An intimate vertical crop focusing strictly on the tuxedo's central axis: the black bow tie, satin lapels, and shirt buttons. Unlike the wide cinematic desktop view, this framing creates a tactile proximity, emphasizing the texture and geometry of the garment's core."
-                loading="lazy"
-              />
+            <div class="mobile-work-container">
+              <div class="work-image work-mobile-image-container">
+                <img
+                  src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159544/eminence-photo6_smdosm.webp"
+                  class="work-mobile-image mobile-visually-hidden-img"
+                  alt="A distilled vertical composition where the brand name 'Éminence' stands in pristine white serif against a deep black void. A mobile-first expression of typographic purity, centering the identity in a stark, minimalist frame."
+                  loading="lazy"
+                /><img
+                  src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159546/eminence-photo7_brjdkg.webp"
+                  class="work-mobile-image"
+                  alt="An intimate vertical crop focusing strictly on the tuxedo's central axis: the black bow tie, satin lapels, and shirt buttons. Unlike the wide cinematic desktop view, this framing creates a tactile proximity, emphasizing the texture and geometry of the garment's core."
+                  loading="lazy"
+                />
+              </div>
             </div>
-            <div class="work-image">
-              <img
-                src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159546/eminence-photo8_ouihtu.webp"
-                class="work-mobile-image"
-                alt="A streamlined vertical display where the silver dinner jacket anchors a cascade of noble fibers. The material composition—Super 150's Wool, Mohair, Cashmere, and Silk—is arranged in a tight, typographical hierarchy, presenting the garment's DNA in a compact, mobile-optimized format."
-                loading="lazy"
-              /><img
-                src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159549/eminence-photo9_zsfzbj.webp"
-                class="work-mobile-image"
-                alt="A typographic meditation set in the void. The visual image is stripped away, leaving only a vertical column of sensory verses like 'Grey sheen under soft light' and 'Silk lining, quiet to the touch'. This text-only layout invites the user to visualize the garment solely through the rhythm of words."
-                loading="lazy"
-              />
+            <div class="mobile-work-container">
+              <div class="work-image work-mobile-image-container">
+                <img
+                  src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159546/eminence-photo8_ouihtu.webp"
+                  class="work-mobile-image"
+                  alt="A streamlined vertical display where the silver dinner jacket anchors a cascade of noble fibers. The material composition—Super 150's Wool, Mohair, Cashmere, and Silk—is arranged in a tight, typographical hierarchy, presenting the garment's DNA in a compact, mobile-optimized format."
+                  loading="lazy"
+                /><img
+                  src="https://res.cloudinary.com/dabshzrnj/image/upload/v1770159549/eminence-photo9_zsfzbj.webp"
+                  class="work-mobile-image mobile-visually-hidden-img"
+                  alt="A typographic meditation set in the void. The visual image is stripped away, leaving only a vertical column of sensory verses like 'Grey sheen under soft light' and 'Silk lining, quiet to the touch'. This text-only layout invites the user to visualize the garment solely through the rhythm of words."
+                  loading="lazy"
+                />
+              </div>
             </div>
             <button type="button" class="top-scroll-btn">top</button>
           </section>
@@ -206,6 +210,6 @@
       defer
     ></script>
     <script src="https://unpkg.com/@barba/core" defer></script>
-    <script src="script.js" defer></script>
+    <script src="script-min.js" defer></script>
   </body>
 </html>
